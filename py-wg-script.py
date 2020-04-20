@@ -75,7 +75,7 @@ def wg_server_creation():
         wg_client_filename = ("client" + str(client) + ".conf")
         wg_client_file = open(wg_client_filename,"a")
         wg_client_file.write("[Interface]")
-        wg_client_file.write("\nAddress= " + str(ipaddress.ip_network(wg_server_ip)) + "\n")
+        wg_client_file.write("\nAddress = " + str(ipaddress.ip_network(wg_server_ip)) + "\n")
         wg_client_file.write("PrivateKey = " + wg_client_private + "\n")
         wg_client_file.write("DNS = " + wg_client_dns + "\n")
         
