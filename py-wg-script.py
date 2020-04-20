@@ -56,11 +56,11 @@ def wg_server_creation():
         wg_server_file.write("[Peer]" + "\n")
 
         wg_client_private_gen       = subprocess.run("wg genkey > " + wg_server + "_client" + str(client) + "_priv" ,shell=True)                                             #Client Private Key
-        wg_client_public_gen        = subprocess.run("wg pubkey < " + wg_server + "client" + str(client) + "_priv" + " > " + wg_server + "client" + str(client) + "_pub",shell=True)    #Client Public Key
+        wg_client_public_gen        = subprocess.run("wg pubkey < " + wg_server + "_client" + str(client) + "_priv" + " > " + wg_server + "_client" + str(client) + "_pub",shell=True)    #Client Public Key
         wg_server_preshared_gen     = subprocess.run("wg genpsk > " + wg_server + "_psk" ,shell=True)                                                           #Preshared Key 
-        wg_client_private_file      = open(wg_server + "client" + str(client) + "_priv","r") 
+        wg_client_private_file      = open(wg_server + "_client" + str(client) + "_priv","r") 
         wg_client_private           = wg_client_private_file.read().strip()
-        wg_client_public_file       = open(wg_server + "client" + str(client) + "_pub","r")
+        wg_client_public_file       = open(wg_server + "_client" + str(client) + "_pub","r")
         wg_client_public            = wg_client_public_file.read().strip()
         wg_server_preshared_file    = open(wg_server + "_psk","r")
         wg_server_preshared         = wg_server_preshared_file.read().strip()
@@ -86,8 +86,8 @@ def wg_server_creation():
         wg_client_file.write("Endpoint = " + wg_server_hostname + ":" + wg_server_port + "\n")
         wg_client_file.write("PersistentKeepalive = " + str(wg_keepalive) + "\n")
 
-        os.remove(wg_server + "client" + str(client) + "_priv")
-        os.remove(wg_server + "client" + str(client) + "_pub")
+        os.remove(wg_server + "_client" + str(client) + "_priv")
+        os.remove(wg_server + "_client" + str(client) + "_pub")
         os.remove(wg_server + "_psk")
 
 wg_server_creation()
