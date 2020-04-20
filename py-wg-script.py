@@ -79,7 +79,7 @@ def wg_server_creation():
         wg_client_file.write("PrivateKey = " + wg_client_private + "\n")
         wg_client_file.write("DNS = " + wg_client_dns + "\n")
         
-        wg_client_file.write("[Peer]")
+        wg_client_file.write("[Peer\n]")
         wg_client_file.write("PublicKey = " + wg_server_public + "\n")
         wg_client_file.write("PresharedKey = " + wg_server_preshared + "\n")
         wg_client_file.write("AllowedIPs = " + wg_allowedips + "\n") 
