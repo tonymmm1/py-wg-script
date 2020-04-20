@@ -12,4 +12,7 @@ pip install ipaddress #Library dependency for Python3
 ```
 chmod +x py-wg-script.py
 ./py-wg-script.py
+cp (interface)/(interface).conf /etc/wireguard
+systemctl enable wg-quick@(interface)
+systemctl start wg-quick@(interface)
 ```
